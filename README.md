@@ -2,7 +2,7 @@
 
 **全球新唱片每日速报智能体** — 基于 [Perplexity Computer](https://www.perplexity.ai/) 的自动化 Agent Skill
 
-自动搜集全球每日新发行的专辑和单曲，按风格分类，翻译成你的语言，定时发送邮件摘要到你的邮箱。
+自动搜集全球每日新发行的专辑和单曲，按风格分类，翻译成你的语言，附带 Apple Music 链接，定时发送邮件摘要到你的邮箱。
 
 ---
 
@@ -11,6 +11,7 @@
 - 🌍 **全球覆盖** — 从 Billboard、Pitchfork、NME、Spotify、Apple Music 等多个权威来源搜集新发行信息
 - 🎸 **风格过滤** — 支持 20 种音乐风格自由组合，也可以全选
 - 🌐 **多语言翻译** — 摘要自动翻译成你指定的语言（中文、英文、日文等）
+- 🍎 **Apple Music 链接** — 每张专辑/单曲自动附带 Apple Music 收听链接，点击即可收听
 - 📧 **定时邮件推送** — 每天/每周自动发送到你的邮箱
 - ⚙️ **灵活配置** — 随时修改风格、语言、频率、邮箱
 
@@ -94,6 +95,7 @@
    发行日期: 2026-03-14
    简介: 英国传奇乐队时隔五年发布的全新录音室专辑，
          延续了实验电子与另类摇滚的融合风格。
+   Apple Music: https://music.apple.com/album/the-new-album/123456789
    推荐曲目: Track One, Track Two
 
 🎵 Pop（流行）
@@ -102,6 +104,7 @@
    单曲: "Sunshine"（阳光）
    发行日期: 2026-03-14
    简介: 英国流行天后的最新夏日单曲。
+   Apple Music: https://music.apple.com/album/sunshine/987654321
 
 ==============================
 今日共 5 张新发行
@@ -119,6 +122,7 @@
 | 邮箱 | 接收邮箱地址 | 用户上下文邮箱 |
 | 频率 | 每天/每周 + 具体时间 | 每天中午 12:00 |
 | 数据来源 | 音乐信息来源网站 | Billboard, Pitchfork, NME, Spotify, Apple Music |
+| Apple Music 链接 | 是否为每张专辑附带收听链接 | 是 |
 
 ## 🔧 修改配置
 
@@ -143,6 +147,8 @@ Perplexity Computer 加载 SKILL.md
                     ↓
               风格过滤 & 去重
                     ↓
+              查找 Apple Music 链接
+                    ↓
               翻译 & 格式化
                     ↓
               通过 Gmail 发送邮件
@@ -154,6 +160,7 @@ Perplexity Computer 加载 SKILL.md
 - 小众风格（如 Ambient、Gospel）某些日期可能搜索结果较少
 - 仅在有符合条件的新发行时才会发送邮件
 - 需要用户已在 Perplexity Computer 中连接 Gmail
+- 每张专辑/单曲均附带 Apple Music 链接，未上架的会标注“暂未上架 Apple Music”
 
 ## 📄 许可证
 
@@ -168,6 +175,7 @@ Perplexity Computer 加载 SKILL.md
 - 增加新的音乐风格分类
 - 优化邮件格式
 - 支持更多推送渠道（Slack、Telegram 等）
+- 支持更多流媒体链接（Spotify、YouTube Music 等）
 
 请随时提交 PR。
 
