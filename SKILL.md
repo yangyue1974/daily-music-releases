@@ -38,6 +38,7 @@ Before setting up the recurring task, collect the following from the user. If no
 | `EMAIL` | Recipient email address | User's email from context |
 | `SCHEDULE` | Delivery time and frequency | Daily at 12:00 noon, user's local timezone |
 | `SOURCES` | Music data sources to search | Billboard, Pitchfork, NME, Spotify, Apple Music |
+| `INCLUDE_APPLE_MUSIC_LINKS` | Include Apple Music links for each release | Yes |
 
 ### Supported Genres
 
@@ -151,6 +152,15 @@ Try to also use fetch_url on key new-release pages:
 - https://pitchfork.com/reviews/albums/ (latest reviews often coincide with release dates)
 - https://www.billboard.com/new-music/ (if available)
 
+**STEP 1b — Find Apple Music links:**
+
+For EACH release found, search for its Apple Music link:
+- Use search_web: "{artist name} {album/single title} site:music.apple.com"
+- Or try: "{artist name} {album/single title} Apple Music"
+- Apple Music links typically look like: https://music.apple.com/{region}/album/{album-name}/{id}
+- If an exact link cannot be found, try browsing the artist's Apple Music page
+- If still not found after searching, mark as "Not yet on Apple Music" in the user's language
+
 **STEP 2 — Compile and filter:**
 
 For each qualifying release, collect:
@@ -159,6 +169,7 @@ For each qualifying release, collect:
 - Genre (from the allowed list)
 - Release date
 - Brief description: 1-2 sentences in {LANGUAGE}
+- Apple Music link (see Step 2b)
 - Notable tracks (if found)
 
 **STEP 3 — Organize by genre:**
@@ -204,6 +215,7 @@ Structure:
    Album/Single: "Title" (translated title)
    Release Date: YYYY-MM-DD
    Description: ...
+   Apple Music: https://music.apple.com/...
    Notable Tracks: ...
 
 2. ...
@@ -291,3 +303,4 @@ Always use `schedule_cron(action="update", ...)` to modify an existing task rath
 - Some niche genres (e.g., Ambient, Gospel) may have fewer results on any given day.
 - The agent will only send an email if it finds at least one qualifying release.
 - Email is sent via the user's connected Gmail (source_id: "gcal"). The user must have Gmail connected.
+- Each release includes an Apple Music link when available. If a release is not yet on Apple Music, it will be noted accordingly.
